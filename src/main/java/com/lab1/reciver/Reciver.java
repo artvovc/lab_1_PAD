@@ -18,10 +18,10 @@ public class Reciver extends Sender {
 
     public Reciver() throws IOException, InterruptedException, ExecutionException, TransformerException, SAXException, JAXBException, ParserConfigurationException {
         AsynchronousServerSocketChannel server = AsynchronousServerSocketChannel.open(null);
-        server.bind(new InetSocketAddress("localhost",5152));
+        server.bind(new InetSocketAddress("localhost",5151));
         Attachment attachment = new Attachment();
         attachment.setServer(server);
-        this.connectAndSendMsg(true,"Artiom",null,"localhost",5152L);
+        this.connectAndSendMsg(true,"Vasile",null,"localhost",5151L);
         server.accept(attachment,new ConnectionHandler());
         Thread.currentThread().join();
     }

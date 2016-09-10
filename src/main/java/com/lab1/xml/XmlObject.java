@@ -30,7 +30,7 @@ public class XmlObject {
         this.message = message;
     }
 
-    public XmlObject(Boolean isSubscriber, String name, String message, String host, Long port) {
+    public XmlObject(Boolean isSubscriber, String name, String message, Long createdDate, String host, Long port) {
         this.isSubscriber = isSubscriber;
         this.name = name;
         this.message = message;

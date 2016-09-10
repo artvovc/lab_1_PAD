@@ -28,23 +28,28 @@ class ReadHandler implements CompletionHandler<Integer, Attachment> {
             e.printStackTrace();
         }
 
+        WriteHandler writer = new WriteHandler();
+
         Subscriber subs = new Subscriber();
         subs.setName(xmlObject.getName());
-        if(xmlObject.getSubscriber()) {
+        if(xmlObject.getSubscriber()&&!Checker.check(xmlObject)) {
             subs.setHost(xmlObject.getHost());
             subs.setPort(xmlObject.getPort());
             Subscribers.getInstance().add(subs);
+        }else if (xmlObject.getSubscriber()) {
+            try {
+                writer.SendAuthError(xmlObject);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
         System.out.println(xmlObject);
 
-        WriteHandler writer = new WriteHandler();
 
         try {
             writer.SendToAllSubscribers(xmlObject);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JAXBException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

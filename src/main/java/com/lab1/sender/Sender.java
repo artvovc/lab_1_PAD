@@ -14,6 +14,7 @@ import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketAddress;
+import java.util.Date;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -23,11 +24,11 @@ public class Sender {
 
     public static void main(String[] args) throws SAXException, InterruptedException, ExecutionException, TransformerException, IOException, JAXBException, ParserConfigurationException {
         Sender sender = new Sender();
-        sender.connectAndSendMsg(false,"lol","privet",null,null);
-        sender.connectAndSendMsg(false,"iupii","privet",null,null);
-        sender.connectAndSendMsg(false,"bitch","privet",null,null);
-        sender.connectAndSendMsg(false,"fuckser","privet",null,null);
-        sender.connectAndSendMsg(false,"looser","privet",null,null);
+        sender.connectAndSendMsg(false,"Artiom","privet",null,null);
+        sender.connectAndSendMsg(false,"Raia","privet",null,null);
+        sender.connectAndSendMsg(false,"asd","privet",null,null);
+        sender.connectAndSendMsg(false,"Vasile","privet",null,null);
+        sender.connectAndSendMsg(false,"Artifafom","privet",null,null);
     }
 
     public Sender() {
@@ -40,7 +41,7 @@ public class Sender {
         OutputStream out = socket.getOutputStream();
         DataOutputStream clientDataSend = new DataOutputStream(out);
         XmlObject xmlObject = new XmlObject(
-                isSubscriber,name,msg,host,port
+                isSubscriber,name,msg,new Date().getTime(),host,port
         );
         String str = DomToString.getXmlStringFromObject(XmlObject.class,xmlObject);
         byte[] bytes = str.getBytes();
